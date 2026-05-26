@@ -15,9 +15,24 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      });
+      const json = await res.json();
+      if (json.success) {
+        setSubmitted(true);
+      } else {
+        alert(json.message || "Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An unexpected error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

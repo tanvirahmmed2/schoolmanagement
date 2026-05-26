@@ -10,14 +10,41 @@ export default function RegisterPage() {
   const [form, setForm] = useState({ name: "", email: "", password: "", confirm: "", institution: "", type: "" });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    if (form.password !== form.confirm) {
+      setError("Passwords do not match");
+      return;
+    }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          password: form.password,
+          institutionName: form.institution,
+          institutionType: form.type,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError(data.message || "Registration failed. Please try again.");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -45,6 +72,12 @@ export default function RegisterPage() {
           Start your 14-day free trial. No credit card required.
         </p>
       </div>
+
+      {error && (
+        <div style={{ padding: "0.875rem 1rem", borderRadius: "var(--radius-md)", background: "#fef2f2", border: "1px solid #fecaca", color: "#dc2626", fontSize: "0.875rem", marginBottom: "1.25rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          ⚠ {error}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
         <Input id="reg-name" label="Full Name" name="name" placeholder="Md. Rafiqul Islam" value={form.name} onChange={handleChange} required />

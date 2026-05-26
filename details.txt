@@ -1,0 +1,681 @@
+# SCHOOL SAAS PLATFORM — MAIN WEBSITE DETAILS
+
+## Overview
+
+A modern multi-tenant School Management SaaS platform built using:
+
+* Next.js
+* Next.js App Router
+* Next.js API Routes
+* JavaScript
+* PostgreSQL
+* Tailwind CSS
+
+The platform allows educational institutions to:
+
+* Register accounts
+* Purchase subscription plans
+* Submit payment information
+* Get institution approval from managers
+* Receive hosted school management systems
+
+This platform works similarly to:
+
+* Shopify
+* Google Workspace
+* Notion
+
+But specifically for:
+
+* Schools
+* Colleges
+* Coaching Centers
+* Madrasas
+* Educational Institutions
+
+---
+
+# 1. PUBLIC WEBSITE (MARKETING WEBSITE)
+
+This is the public-facing website where institutions discover and purchase the service.
+
+## Public Routes
+
+```bash
+/
+```
+
+Home page
+
+```bash
+/features
+```
+
+Features page
+
+```bash
+/pricing
+```
+
+Subscription plans
+
+```bash
+/about
+```
+
+About company
+
+```bash
+/contact
+```
+
+Contact page
+
+```bash
+/demo
+```
+
+Demo request
+
+```bash
+/faq
+```
+
+Help center
+
+---
+
+# 2. HOME PAGE STRUCTURE
+
+## Hero Section
+
+### Title
+
+Run Your School Smarter, Not Harder
+
+### Subtitle
+
+A complete cloud-based school management platform for admissions, attendance, exams, payments, and academic operations.
+
+### CTA Buttons
+
+* Get Started
+* View Pricing
+
+---
+
+## Features Section
+
+### Core Features
+
+* Student Management
+* Teacher Management
+* Attendance Tracking
+* Online Fee Collection
+* Exam & Result Management
+* Parent Portal
+* SMS & Email Notifications
+* Multi-Branch Support
+* Academic Reports
+* Cloud Hosting
+
+---
+
+## How It Works
+
+### Step 1
+
+Create account
+
+### Step 2
+
+Choose subscription plan
+
+### Step 3
+
+Submit payment information
+
+### Step 4
+
+Manager verifies payment
+
+### Step 5
+
+Institution system gets activated
+
+---
+
+## Pricing Section
+
+### Basic Plan
+
+For small institutions
+
+### Standard Plan
+
+For medium institutions
+
+### Premium Plan
+
+For large institutions
+
+Each plan includes:
+
+* Student limits
+* Teacher limits
+* Feature access
+* Hosting
+* Support
+
+---
+
+## Testimonials
+
+* Institution reviews
+* Success stories
+* User feedback
+* Client ratings
+
+---
+
+## CTA Section
+
+### Title
+
+Start your digital school in minutes
+
+### Button
+
+Create Account
+
+---
+
+# 3. AUTHENTICATION SYSTEM
+
+## Routes
+
+```bash
+/login
+```
+
+```bash
+/register
+```
+
+```bash
+/forgot-password
+```
+
+---
+
+## Registration Flow
+
+User provides:
+
+* Full Name
+* Email
+* Password
+
+Then:
+
+* account created
+* assigned role = client
+* redirected to onboarding
+
+---
+
+# 4. CLIENT PANEL (CUSTOMER PANEL)
+
+## Route
+
+```bash
+/client/dashboard
+```
+
+This panel is ONLY for institution owners/customers.
+
+---
+
+## Client Features
+
+### Dashboard
+
+* Current subscription
+* Payment status
+* Plan details
+* Account information
+* Approval status
+
+---
+
+### Profile Management
+
+Clients can:
+
+* Update profile information
+* Change password
+* Update institution contact information
+
+---
+
+### Subscription System
+
+Clients can:
+
+* View plans
+* Upgrade plans
+* Renew subscriptions
+* View subscription history
+
+---
+
+### Purchase System
+
+Client can:
+
+* Select a plan
+* Submit payment transaction ID (bKash only)
+* Upload payment screenshot (optional)
+
+Purchase status:
+
+* Pending
+* Approved
+* Rejected
+
+---
+
+### Support System
+
+Clients can:
+
+* Open support tickets
+* Chat with manager/support
+* View ticket status
+
+---
+
+### Reviews
+
+Clients can:
+
+* Submit reviews
+* Rate platform
+
+---
+
+# 5. PURCHASE APPROVAL SYSTEM
+
+## Purchase Flow
+
+### Step 1
+
+Client selects plan
+
+### Step 2
+
+Client submits:
+
+* bKash transaction ID
+* payment amount
+
+### Step 3
+
+Purchase request goes to manager panel
+
+### Step 4
+
+Manager can:
+
+* Approve
+* Reject
+* Delete request
+
+### Step 5 (IMPORTANT)
+
+If approved:
+
+* subscription created
+* tenant created
+* hosted institution activated
+* support ticket automatically created between manager and client
+
+---
+
+# 6. MANAGER PANEL
+
+## Route
+
+```bash
+/manager/dashboard
+```
+
+Managers control operational activities.
+
+---
+
+## Manager Permissions
+
+### Subscription Management
+
+* Approve purchases
+* Reject purchases
+* Delete purchase requests
+* View billing reports
+
+---
+
+### Tenant Management
+
+Managers can:
+
+* View tenants
+* Edit tenant information
+* Suspend tenants
+* Activate tenants
+
+---
+
+### Plan Management
+
+Managers can:
+
+* Create plans
+* Update plans
+* Delete plans
+* Add plan features
+
+Plans automatically appear on:
+
+```bash
+/pricing
+```
+
+---
+
+### Reports & Analytics
+
+Managers can view:
+
+* Revenue reports
+* Active subscriptions
+* Pending approvals
+* Tenant growth
+* Billing reports
+* Review analytics
+
+---
+
+### Review Management
+
+Managers can:
+
+* View reviews
+* Moderate reviews
+* Remove inappropriate reviews
+
+---
+
+### Support System
+
+Managers can:
+
+* Reply to tickets
+* Manage support conversations
+* Handle customer issues
+
+---
+
+# 7. ADMIN PANEL
+
+## Route
+
+```bash
+/admin/dashboard
+```
+
+This is the highest authority panel.
+
+---
+
+## Admin Permissions
+
+### Full System Access
+
+Admin can:
+
+* View all users
+* View all tenants
+* View all subscriptions
+* View all purchases
+* View all reviews
+* View all reports
+
+---
+
+### Role Management
+
+Admin can:
+
+* Promote users
+* Demote users
+* Change user roles
+
+Roles:
+
+* admin
+* manager
+* support
+* client
+
+---
+
+### Tenant Control
+
+Admin can:
+
+* Delete tenants
+* Suspend tenants
+* Modify tenant information
+
+---
+
+### Subscription Control
+
+Admin can:
+
+* Override subscriptions
+* Change plans manually
+* Activate/deactivate subscriptions
+
+---
+
+### Platform Settings
+
+Admin can manage:
+
+* Global settings
+* Payment settings
+* System configurations
+* Security configurations
+
+---
+
+# 8. SUPPORT PANEL
+
+## Route
+
+```bash
+/support/dashboard
+```
+
+Support team handles customer communication.
+
+---
+
+## Support Features
+
+* View tickets
+* Reply to customers
+* Track ticket status
+* Escalate issues to manager/admin
+
+---
+
+# 9. SYSTEM FLOW
+
+## Step 1
+
+User visits:
+
+```bash
+/
+```
+
+## Step 2
+
+User creates account
+
+## Step 3
+
+User selects subscription plan
+
+## Step 4
+
+User submits:
+
+* bKash transaction ID
+* payment information
+
+## Step 5
+
+Manager reviews purchase
+
+## Step 6
+
+Manager approves purchase
+
+## Step 7
+
+System automatically:
+
+* creates tenant
+* activates subscription
+* creates support conversation
+
+## Step 8
+
+Client receives hosted institution system
+
+Example:
+
+```bash
+schoolname.yourdomain.com
+```
+
+---
+
+# 10. CORE SYSTEM MODULES
+
+## Public Website
+
+* Marketing pages
+* Pricing
+* Features
+
+## Authentication
+
+* Login
+* Registration
+* Password reset
+
+## Client System
+
+* Billing
+* Profile
+* Support
+* Subscription management
+
+## Manager System
+
+* Approvals
+* Plans
+* Billing reports
+* Tenant management
+
+## Admin System
+
+* Full platform control
+* Role management
+* Analytics
+
+## Support System
+
+* Ticket handling
+* Customer support
+
+---
+
+# 11. TECHNOLOGY STACK
+
+## Frontend
+
+* Next.js
+* React
+* Tailwind CSS
+
+## Backend
+
+* Next.js API Routes
+
+## Database
+
+* PostgreSQL
+
+## Database Driver
+
+* pg
+
+## Authentication
+
+* JWT
+* HTTP-only cookies
+
+## Hosting
+
+* Vercel
+* VPS
+* Railway
+* Supabase PostgreSQL
+
+---
+
+# 12. BUSINESS MODEL
+
+This is a subscription-based SaaS platform.
+
+Institutions:
+
+* purchase plans
+* renew yearly/monthly
+* receive hosted systems
+
+Revenue sources:
+
+* subscriptions
+* premium plans
+* setup services
+* custom hosting
+* support packages
+
+---
+
+# 13. FINAL PRODUCT VISION
+
+A scalable cloud-based educational SaaS platform where institutions can:
+
+* subscribe online
+* manage operations digitally
+* communicate with students
+* automate academic workflows
+* run their institution from anywhere

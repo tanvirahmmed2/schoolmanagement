@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PlanCard from "@/components/ui/PlanCard";
 import Accordion from "@/components/ui/Accordion";
 
-const PLANS = [
+const DEFAULT_PLANS = [
   {
     name: "Starter", price: 1499, yearlyPrice: 14388,
     description: "Perfect for small schools and coaching centres.",
@@ -66,6 +66,53 @@ const FAQ_ITEMS = [
 
 export default function PricingPage() {
   const [billing, setBilling] = useState("monthly");
+  const [plans, setPlans] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadPlans() {
+      try {
+        const res = await fetch("/api/subscriptions/plans");
+        const json = await res.json();
+        if (json.success && json.data && json.data.length > 0) {
+          const mapped = json.data.map((p, index) => {
+            const isMonthly = p.billing_cycle === "monthly";
+            const monthlyPrice = isMonthly ? parseFloat(p.price) : Math.round(parseFloat(p.price) / 12);
+            const yearlyPrice = isMonthly ? Math.round(parseFloat(p.price) * 12 * 0.8) : parseFloat(p.price);
+
+            const mappedFeatures = Array.isArray(p.features)
+              ? p.features.map(f => typeof f === 'string' ? { label: f, included: true } : f)
+              : [
+                  { label: `Up to ${p.max_students || 'unlimited'} students`, included: true },
+                  { label: `Up to ${p.max_teachers || 'unlimited'} teachers`, included: true },
+                ];
+
+            const colors = ["slate", "indigo", "violet"];
+
+            return {
+              name: p.name,
+              price: monthlyPrice,
+              yearlyPrice: yearlyPrice,
+              description: p.description || `${p.name} subscription package plan for institutions.`,
+              color: colors[index % colors.length],
+              features: mappedFeatures,
+              cta: "Get Started",
+              href: "/register"
+            };
+          });
+          setPlans(mapped);
+        } else {
+          setPlans(DEFAULT_PLANS);
+        }
+      } catch (err) {
+        console.error(err);
+        setPlans(DEFAULT_PLANS);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadPlans();
+  }, []);
 
   return (
     <>
@@ -96,11 +143,15 @@ export default function PricingPage() {
 
       <section style={{ padding: "4rem 0 6rem", background: "var(--bg-subtle)" }}>
         <div className="section-container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", alignItems: "center" }}>
-            <PlanCard plan={PLANS[0]} billingCycle={billing} />
-            <PlanCard plan={PLANS[1]} popular billingCycle={billing} />
-            <PlanCard plan={PLANS[2]} billingCycle={billing} />
-          </div>
+          {loading ? (
+            <p style={{ textAlign: "center", color: "var(--text-muted)", padding: "4rem 0" }}>Loading pricing tiers...</p>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem", alignItems: "center" }}>
+              {plans.map((p, i) => (
+                <PlanCard key={p.name} plan={p} popular={i === 1} billingCycle={billing} />
+              ))}
+            </div>
+          )}
           <p style={{ textAlign: "center", marginTop: "2rem", fontSize: "0.875rem", color: "var(--text-muted)" }}>
             All prices in Bangladeshi Taka (৳). Yearly billing charged upfront.
           </p>
