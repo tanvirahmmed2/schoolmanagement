@@ -1,0 +1,167 @@
+school-saas/
+│
+├── app/
+│
+│   # =========================
+│   # 🌐 MARKETING WEBSITE
+│   # =========================
+│   ├── (marketing)/
+│   │   ├── page.tsx              # HOME PAGE (/)
+│   │   ├── layout.tsx
+│   │   ├── about/
+│   │   │   └── page.tsx
+│   │   ├── features/
+│   │   │   └── page.tsx
+│   │   ├── pricing/
+│   │   │   └── page.tsx
+│   │   ├── contact/
+│   │   │   └── page.tsx
+│   │   ├── demo/
+│   │   │   └── page.tsx
+│   │   └── faq/
+│   │       └── page.tsx
+│
+│   # =========================
+│   # 🔐 AUTH SYSTEM
+│   # =========================
+│   ├── (auth)/
+│   │   ├── login/
+│   │   │   └── page.tsx
+│   │   ├── register/
+│   │   │   └── page.tsx
+│   │   ├── forgot-password/
+│   │   │   └── page.tsx
+│   │   ├── reset-password/
+│   │   │   └── page.tsx
+│   │   └── layout.tsx
+│
+│   # =========================
+│   # 🧠 SAAS ADMIN (YOU)
+│   # =========================
+│   ├── admin/
+│   │   ├── dashboard/
+│   │   │   └── page.tsx
+│   │   ├── tenants/
+│   │   ├── users/
+│   │   ├── subscriptions/
+│   │   ├── payments/
+│   │   ├── analytics/
+│   │   ├── settings/
+│   │   └── layout.tsx
+│
+│   # =========================
+│   # 🧑‍💼 MANAGER PANEL
+│   # =========================
+│   ├── manager/
+│   │   ├── dashboard/
+│   │   ├── tenants/
+│   │   ├── reports/
+│   │   ├── billing/
+│   │   └── layout.tsx
+│
+│   # =========================
+│   # 🎧 SUPPORT PANEL
+│   # =========================
+│   ├── support/
+│   │   ├── dashboard/
+│   │   ├── tickets/
+│   │   ├── chat/
+│   │   └── layout.tsx
+│
+│   # =========================
+│   # 🏫 CLIENT (SCHOOL OWNER)
+│   # =========================
+│   ├── client/
+│   │   ├── onboarding/
+│   │   ├── dashboard/
+│   │   ├── billing/
+│   │   ├── settings/
+│   │   ├── support/
+│   │   └── layout.tsx
+│
+│   # =========================
+│   # 🔌 API ROUTES (NO ORM)
+│   # =========================
+│   ├── api/
+│   │   ├── auth/
+│   │   │   ├── login/
+│   │   │   ├── register/
+│   │   │   ├── logout/
+│   │   │   └── refresh/
+│   │   │
+│   │   ├── users/
+│   │   ├── tenants/
+│   │   ├── subscriptions/
+│   │   ├── payments/
+│   │   ├── support/
+│   │   ├── notifications/
+│   │   ├── audit/
+│   │   └── health/
+│
+│   └── layout.tsx
+│
+# =========================
+# 🧩 CORE SYSTEM FILES
+# =========================
+
+├── components/
+│   ├── ui/
+│   ├── forms/
+│   ├── tables/
+│   ├── charts/
+│   └── layout/
+
+├── lib/
+│   ├── db.js              # PostgreSQL connection (pg)
+│   ├── auth.js           # JWT logic
+│   ├── hash.js           # bcrypt/password hashing
+│   ├── middleware.js     # role guard
+│   └── constants.js
+
+├── services/
+│   ├── auth.service.js
+│   ├── user.service.js
+│   ├── tenant.service.js
+│   ├── subscription.service.js
+│   ├── payment.service.js
+│   └── support.service.js
+
+├── queries/              # RAW SQL LAYER (NO ORM)
+│   ├── auth.sql.js
+│   ├── users.sql.js
+│   ├── tenants.sql.js
+│   ├── subscriptions.sql.js
+│   ├── payments.sql.js
+│   └── support.sql.js
+
+├── hooks/
+│   ├── useAuth.js
+│   ├── useRole.js
+│   ├── useTenant.js
+│   └── useFetch.js
+
+├── utils/
+│   ├── response.js
+│   ├── validator.js
+│   ├── logger.js
+│   └── helpers.js
+
+├── middleware.js         # route protection (Next.js middleware)
+
+├── config/
+│   ├── env.js
+│   ├── roles.js
+│   └── permissions.js
+
+├── public/
+│   ├── images/
+│   ├── icons/
+│   └── logos/
+
+├── styles/
+│   └── globals.css
+
+├── .env
+├── package.json
+├── next.config.js
+└── README.md
